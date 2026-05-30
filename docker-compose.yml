@@ -1,0 +1,16 @@
+# docker-compose.yml
+# Runs the Gradio mental health diagnosis app locally
+
+services:
+  gradio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    restart: unless-stopped
